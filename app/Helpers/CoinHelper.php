@@ -3,9 +3,6 @@
 namespace App\Helpers;
 
 use DateTime;
-use \Illuminate\Container\Container as Container;
-use \Illuminate\Support\Facades\Facade as Facade;
-use Illuminate\Support\Facades\DB;
 use App\Helpers\AttributeHelper;
 
 /**
@@ -141,17 +138,33 @@ abstract class CoinHelper
     /**
      * @var array[]
      */
-    public array $proofs = ['Proof', 'Matte Proof', 'Reverse Proof'];
+    public array $strikes = [
+        'Business','Enhanced', 'Uncirculated','Matte Finish','Matte Proof',
+        'Proof','Reverse Proof','Satin Finish','Special Mint','Special Strike'
+    ];
 
     /**
      * @var array[]
      */
-    public array $snowTypes = ['Indian Head', 'Flying Eagle'];
+    public array $business = [
+        'Business','Enhanced', 'Uncirculated'
+    ];
 
     /**
      * @var array[]
      */
-    public array $vamTypes = ['Morgan Dollar', 'Peace Dollar'];
+    public array $special = ['Special Mint','Special Strike','Satin Finish','High Relief'];
+
+    /**
+     * @var array[]
+     */
+    public array $proofs = ['Proof', 'Matte Proof', 'Reverse Proof','Matte Finish'];
+
+
+    /**
+     * @var array[]
+     */
+    public array $satinTypes = ['Lincoln Wheat', 'Lincoln Memorial', 'Lincoln Bicentennial', 'Sacagawea Dollar'];
 
     /**
      * @var array[]
@@ -162,11 +175,6 @@ abstract class CoinHelper
      * @var array[]
      */
     public array $colorCategories = ['Small Cent', 'Large Cent', 'Half Cent'];
-
-    /**
-     * @var array[]
-     */
-    public array $bandTypes = ['Roosevelt Dime', 'Winged Liberty Dime'];
 
     /**
      * @var array[]
@@ -196,67 +204,7 @@ abstract class CoinHelper
     /**
      * @var array[]
      */
-    public array $albumCategories = ['Small Cent', 'Large Cent', 'Half Cent'];
-
-    /**
-     * @var array[]
-     */
-    public array $fullTypes = [
-        'Jefferson Nickel',
-        'Standing Liberty',
-        'Winged Liberty Dime',
-        'Franklin Half Dollar',
-        'Roosevelt Dime'];
-
-    /**
-     * @var array[]
-     */
-    public array $satinTypes = ['Lincoln Wheat', 'Lincoln Memorial', 'Lincoln Bicentennial', 'Sacagawea Dollar'];
-
-    /**
-     * @var array[]
-     */
-    public array $cameoTypes = [
-        'Lincoln Wheat', 'Lincoln Memorial', 'Jefferson Nickel',
-        'Winged Liberty Dime', 'Roosevelt Dime', 'Washington Quarter',
-        'Walking Liberty', 'Kennedy Half Dollar', 'Franklin Half Dollar',
-        'Susan B Anthony Dollar', 'Presidential Dollar', 'Sacagawea Dollar',
-        'Eisenhower Dollar', 'Commemorative Half Dollar', 'Silver Dollar',
-        'Tenth Ounce Gold', 'Quarter Ounce Gold', 'Half Ounce Gold',
-        'One Ounce Gold', 'Tenth Ounce Buffalo', 'Quarter Ounce Buffalo',
-        'Half Ounce Buffalo', 'One Ounce Buffalo', 'Tenth Ounce Platinum',
-        'Quarter Ounce Platinum', 'Half Ounce Platinum', 'One Ounce Platinum'
-    ];
-
-    /**
-     * @var array[]
-     */
-    public array $ultraCameoTypes = [
-        'Lincoln Wheat', 'Lincoln Memorial', 'Jefferson Nickel',
-        'Winged Liberty Dime', 'Roosevelt Dime', 'Washington Quarter',
-        'Walking Liberty', 'Kennedy Half Dollar', 'Franklin Half Dollar',
-        'Susan B Anthony Dollar', 'Presidential Dollar', 'Sacagawea Dollar',
-        'Eisenhower Dollar', 'Commemorative Half Dollar', 'Silver Dollar',
-        'Tenth Ounce Gold', 'Quarter Ounce Gold', 'Half Ounce Gold',
-        'One Ounce Gold', 'Tenth Ounce Buffalo', 'Quarter Ounce Buffalo',
-        'Half Ounce Buffalo', 'One Ounce Buffalo', 'Tenth Ounce Platinum',
-        'Quarter Ounce Platinum', 'Half Ounce Platinum', 'One Ounce Platinum'
-    ];
-
-    /**
-     * @var array[]
-     */
-    public array $deepCameoTypes = [
-        'Lincoln Wheat', 'Lincoln Memorial', 'Jefferson Nickel', 'Winged Liberty Dime',
-        'Roosevelt Dime', 'Washington Quarter', 'Walking Liberty',
-        'Kennedy Half Dollar', 'Franklin Half Dollar', 'Susan B Anthony Dollar',
-        'Presidential Dollar', 'Sacagawea Dollar', 'Eisenhower Dollar',
-        'Commemorative Half Dollar', 'Silver Dollar', 'Tenth Ounce Gold',
-        'Quarter Ounce Gold', 'Half Ounce Gold', 'One Ounce Gold',
-        'Tenth Ounce Buffalo', 'Quarter Ounce Buffalo', 'Half Ounce Buffalo',
-        'One Ounce Buffalo', 'Tenth Ounce Platinum', 'Quarter Ounce Platinum',
-        'Half Ounce Platinum', 'One Ounce Platinum'
-    ];
+    public array $albumCategories = ['Half Cent', 'Large Cent', 'Small Cent'];
 
 
     /**
@@ -283,7 +231,6 @@ abstract class CoinHelper
      */
     static public function getSeatedTypes(): array
     {
-        //return DB::raw('SELECT * FROM ViewSeatedLibertyTypes');
         return [
             8 => 'Seated Liberty Half Dime',
             13 => 'Seated Liberty Dime',
@@ -326,6 +273,9 @@ abstract class CoinHelper
             121 => 'Capped Bust Half Eagle'
         ];
     }
+
+
+
     /**
      * @return array[]
      */

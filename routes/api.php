@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,7 +33,12 @@ Route::group(['prefix' => 'coins', 'as' => 'coins.'], function () {
 
 });
 
+Route::group(['prefix' => 'type', 'as' => 'type.'], function () {
+    Route::post('/view', [TypeController::class, 'index'])->name('view');
+    //Route::get('/view/{id}', [CategoryController::class, 'index'])->name('view')->where('id', '[0-9]+');;
+});
+
 Route::group(['prefix' => 'category', 'as' => 'category.'], function () {
     Route::post('/view', 'App\Http\Controllers\CategoryController@index')->name('view');
-
+    //Route::get('/view/{id}', [CategoryController::class, 'index'])->name('view')->where('id', '[0-9]+');;
 });
